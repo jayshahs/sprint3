@@ -1,0 +1,151 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+	<style>
+        .glyphicon-chevron-left:before {
+            content: "\e079";
+        }
+
+        .bs-glyphicons li {
+            width: 12.5%;
+            font-size: 12px;
+        }
+
+        .bs-glyphicons li {
+            float: left;
+            width: 25%;
+            height: 115px;
+            padding: 10px;
+            font-size: 10px;
+            line-height: 1.4;
+            text-align: center;
+            background-color: #f9f9f9;
+            border: 1px solid #fff;
+        }
+
+
+
+
+        .account {
+            width: 400px;
+            height: 405px;
+            border: 2px solid antiquewhite;
+            border-radius: 5px;
+            box-shadow: 5px 5px 5px #aaa;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 50px;
+            padding: 20px 40px;
+        }
+
+        .account h2 {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+
+        .particulars legend {
+            display: block;
+            width: 100%;
+            padding-left: 3px;
+            margin-bottom: 20px;
+            font-size: 25px;
+            line-height: inherit;
+            color: #333;
+            border-bottom: 3px solid powderblue;
+        }
+
+        .one img {
+            width: 400px;
+            height: 400px;
+        }
+
+        .sider {
+            min-height: calc(100vh - 60px);
+            background: #ffffff;
+            font-family: "Roboto", sans-serif;
+            font-weight: 400;
+            padding: 0;
+            width: 257px;
+
+
+            border-right: 2px solid #e3e3e3;
+            border-bottom: 2px solid #e3e3e3;
+        }
+
+        .nav-item {
+            border-bottom: 2px solid #e3e3e3;
+            margin-top: 50px;
+        }
+
+        .text-white {
+            color: #fff !important;
+        }
+
+	</style>
+	<div class="sider" style="float: left">
+		<ul class="nav">
+			<li class="nav-item" style="margin-top: 1px">
+				<a style="background-color:#000; " href="/main/"
+				   class="list-group-item list-group-item-warning"><h3 class="text-white">Home</h3></a>
+			</li>
+			<li class="nav-item">
+				<a style="background-color: #ff5916 !important; " href="/main1/"
+				   class="list-group-item list-group-item-warning">
+					<h3 class="text-white">My own recipes</h3></a>
+			</li>
+			<li class="nav-item">
+				<a style="background-color: #44c553 !important; " href="/meun/main/add/"
+				   class="list-group-item list-group-item-success"><h3 class="text-white">Create recipe</h3></a>
+			</li>
+			<li class="nav-item">
+				<a style="background-color: #7832e2 !important; " href="/meun/main/add1/"
+				   class="list-group-item list-group-item-info"><h3 class="text-white">Customize recipe</h3></a>
+			</li>
+
+
+		</ul>
+	</div>
+	<div class="container">
+		<div class="row">
+
+			<div class="col-md-8">
+				{% for obj in queryset %}
+					<div class="alert alert-success"><h2>{{ obj.name }} </h2>
+					</div>
+					<div class="one">
+						<img src="/media/{{ obj.img }}">
+					</div>
+
+					<a href="/main1/">
+						<h3>
+
+							<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+							<span class="glyphicon-class"></span>
+
+							Back
+						</h3>
+					</a>
+
+
+				{% endfor %}
+			</div>
+			<div class="col-md-4" style="margin-top: -510px; margin-right:150px; float: right">
+				<div class="account">
+					<form action="/mail/send/" method="POST">
+						{% csrf_token %}
+						<h1 style="margin-top: 10px">Share this recipe to ...</h1>
+						<p>
+							<h3>Your email:</h3> <input type="text" style="width: 250px; height: 40px" name="mm">
+						</p>
+						<p>
+							<h3>Other's email:</h3> <input type="text" style="width: 250px; height: 40px" name="mmm">
+						</p>
+						<a style="padding-top: 50px"><input type="submit" class="btn-lg btn-success"
+						                                    value="Share this recipe to..."></a>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

@@ -1,0 +1,152 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+	{% load static %}
+	<style>
+        .one {
+            width: 100%;
+            height: 500px;
+            margin: 0 20px 10px 130px;
+            background-color: darkgrey;
+
+
+        }
+
+        .two {
+            float: left;
+            width: 200px;
+            height: 100%;
+
+        }
+
+        .two h2 {
+            text-align: center;
+            margin-top: 150px;
+        }
+
+
+        .three ul {
+            width: 800px;
+            float: right;
+            background: #fff;
+            margin-bottom: -1px;
+        }
+
+
+        ol, ul {
+            list-style: none;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .three {
+            margin-left: 1px;
+            float: left;
+        }
+
+        .three a {
+            float: left;
+            height: 102px;
+            line-height: 32px;
+            width: 150px;
+            border-left: 1px solid #eeeeee;
+            border-bottom: 1px solid #eeeeee;
+            font-size: 15px;
+            color: #333;
+            text-decoration: none;
+            text-align: center;
+            position: relative;
+        }
+
+        .sider {
+            min-height: calc(100vh - 60px);
+            background: #ffffff;
+            font-family: "Roboto", sans-serif;
+            font-weight: 400;
+            padding: 0;
+            width: 257px;
+	        margin-top: -20px;
+
+
+            border-right: 2px solid #e3e3e3;
+            border-bottom: 2px solid #e3e3e3;
+        }
+
+        .nav-item {
+            border-bottom: 2px solid #e3e3e3;
+            margin-top: 50px;
+        }
+
+        .text-white {
+            color: #fff !important;
+        }
+
+	</style>
+	<div class="sider" style="float: left">
+		<ul class="nav">
+			<li class="nav-item" style="margin-top: 1px">
+				<a style="background-color:#000; " href="/main/"
+				   class="list-group-item list-group-item-warning"><h3 class="text-white">Home</h3></a>
+			</li>
+			<li class="nav-item">
+				<a style="background-color: #ff5916 !important; " href="/main1/"
+				   class="list-group-item list-group-item-warning">
+					<h3 class="text-white">My own recipes</h3></a>
+			</li>
+			<li class="nav-item">
+				<a style="background-color: #44c553 !important; " href="/meun/main/add/"
+				   class="list-group-item list-group-item-success"><h3 class="text-white">Create recipe</h3></a>
+			</li>
+			<li class="nav-item">
+				<a style="background-color: #7832e2 !important; " href="/meun/main/add1/"
+				   class="list-group-item list-group-item-info"><h3 class="text-white">Customize recipe</h3></a>
+			</li>
+
+		</ul>
+	</div>
+
+	<div class="container">
+		<div class="one" style="margin-top: -18px">
+			<a href="/Ingredienta/add/" class="list-group-item list-group-item-info"><h3>Create Auxiliary</h3></a>
+			<div class="two">
+				<h2>Auxiliary</h2>
+			</div>
+			<div class="three">
+				<ul>
+					{% for obj in queryset %}
+						<li><a title="The method of cooking" href="#" target="_blank">{{ obj.aux }}</a></li>
+					{% endfor %}
+				</ul>
+			</div>
+		</div>
+		<div class="one" style="margin-top: 50px">
+			<a href="/Ingredienta/add1/" class="list-group-item list-group-item-info"><h3>Create Auxiliary</h3></a>
+			<div class="two">
+				<h2>Auxiliary</h2>
+			</div>
+			<div class="three">
+				<ul>
+					{% for obj in queryset1 %}
+						<li><a title="The method of cooking" href="#" target="_blank">{{ obj.aux1 }}</a></li>
+					{% endfor %}
+				</ul>
+			</div>
+		</div>
+		<div class="one" style="margin-top: 50px">
+			<a href="/Ingredienta/add2/" class="list-group-item list-group-item-info"><h3>Create Auxiliary</h3></a>
+			<div class="two">
+				<h2>Auxiliary</h2>
+			</div>
+			<div class="three">
+				<ul>
+					{% for obj in queryset2 %}
+						<li><a title="The method of cooking" href="#" target="_blank">{{ obj.aux2 }}</a></li>
+					{% endfor %}
+				</ul>
+			</div>
+		</div>
+	</div>
+{% endblock %}

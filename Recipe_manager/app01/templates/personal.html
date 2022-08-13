@@ -1,0 +1,78 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+	{% load static %}
+	<style>
+        .col-md-6 h2 {
+            padding-top: 40px;
+        }
+
+        .text-white {
+            color: #fff !important;
+        }
+
+
+	</style>
+	<div class="container">
+		<div class="row" style="margin-left: 150px">
+
+			<div class="col-md-6" style=" width: 400px; height: 600px">
+				{% for obj in queryset %}
+					<div>
+						<a href="/person/{{ obj.id }}/edit/"><h2>Edit your information</h2></a>
+{#						<a href="/person/add/"><h2>Add your information</h2></a>#}
+					</div>
+					<img style="height: 400px; width: 400px; padding-right: 20px" src="/media/{{ obj.img }}">
+				{% endfor %}
+				<a href="/main/">
+					<h3>
+						<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+						<span class="glyphicon-class"></span>
+						Back
+					</h3>
+				</a>
+
+			</div>
+
+			<div class="col-md-6" style="  width: 400px; height: 600px; margin-left: 20px; margin-top: 90px">
+				{% for obj in queryset %}
+					<div>
+						<a style="background-color: #ff5916 !important; width: 400px; margin-left: -15px " href="#"
+						   class="list-group-item list-group-item-success"><h3 class="text-white">Name</h3></a>
+						<h2 style="margin-top: -20px">{{ obj.username }}</h2>
+					</div>
+
+
+					<div>
+						<a style="background-color: #44c553 !important; width: 400px; margin-left: -15px " href="#"
+						   class="list-group-item list-group-item-info"><h3 class="text-white">Email</h3></a>
+						<h2 style="margin-top: -20px">{{ obj.mail }}</h2>
+					</div>
+					<div>
+						<a style="background-color: #7832e2 !important; width: 400px; margin-left: -15px " href="#"
+						   class="list-group-item list-group-item-warning"><h3 class="text-white">Comment</h3></a>
+						<h3>{{ obj.comment }}</h3>
+					</div>
+					<div>
+						<a style="background-color: #2aabd2 !important; width: 400px; margin-left: -15px " href="#"
+						   class="list-group-item list-group-item-warning"><h3 class="text-white">Address</h3></a>
+						<h3>{{ obj.addr }}</h3>
+					</div>
+
+				{% endfor %}
+
+
+			</div>
+
+
+		</div>
+
+
+	</div>
+
+
+
+
+
+
+{% endblock %}
